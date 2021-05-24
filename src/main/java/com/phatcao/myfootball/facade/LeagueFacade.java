@@ -7,7 +7,7 @@ public interface LeagueFacade
 {
 	ResponseData getLeaguesByUsername(String username);
 
-	ResponseData getInfoLeagueById(long leagueId);
+	ResponseData getInfoLeagueById(Integer leagueId);
 
-	ResponseData getMatchInfoByLeagueId(long leagueId);
+	ResponseData getMatchInfoByLeagueId(Integer leagueId);
 }

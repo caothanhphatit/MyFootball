@@ -8,9 +8,10 @@ import java.util.List;
 
 public interface LeagueService
 {
+
 	public List<LeagueData> getAllLeague();
 
 	List<LeagueData> getLeaguesByListId(List<Integer> ids);
 
-	LeagueData getLeagueInfoById(long leagueId);
+	LeagueData getLeagueInfoById(Integer leagueId);
 }

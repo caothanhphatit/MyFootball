@@ -6,12 +6,13 @@ import com.phatcao.myfootball.dto.match.IncomingMatchData;
 import com.phatcao.myfootball.dto.match.MatchData;
 import com.phatcao.myfootball.service.TeamService;
 import com.phatcao.myfootball.util.converter.MatchConverter;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
-
+@Component
 public class MatchConverterImpl implements MatchConverter
 {
 	@Resource

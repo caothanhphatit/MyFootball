@@ -33,11 +33,11 @@ public class LeagueServiceImpl implements LeagueService
 	@Override
 	public List<LeagueData> getLeaguesByListId(List<Integer> ids)
 	{
-		return null;
+		return leagueConverter.convertLeagueEntitiesToLeagueData(leagueRepository.findAllById(ids));
 	}
 
 	@Override
-	public LeagueData getLeagueInfoById(long leagueId)
+	public LeagueData getLeagueInfoById(Integer leagueId)
 	{
 		return leagueConverter.convertLeagueEntityToLeagueData(leagueRepository.getOne(leagueId));
 	}

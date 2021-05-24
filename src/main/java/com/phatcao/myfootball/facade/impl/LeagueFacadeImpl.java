@@ -4,15 +4,20 @@ import com.phatcao.myfootball.common.Constant;
 import com.phatcao.myfootball.dao.entity.MatchEntity;
 import com.phatcao.myfootball.dao.entity.UserLeagueEntity;
 import com.phatcao.myfootball.dto.common.ResponseData;
+import com.phatcao.myfootball.dto.league_session.LeagueSessionData;
+import com.phatcao.myfootball.dto.leauge.LeagueData;
 import com.phatcao.myfootball.dto.leauge.LeagueMatchData;
 import com.phatcao.myfootball.dto.match.CompleteMatchData;
 import com.phatcao.myfootball.dto.match.IncomingMatchData;
 import com.phatcao.myfootball.facade.LeagueFacade;
 import com.phatcao.myfootball.service.LeagueService;
+import com.phatcao.myfootball.service.LeagueSessionService;
 import com.phatcao.myfootball.service.MatchService;
 import com.phatcao.myfootball.service.UserLeagueService;
+import com.phatcao.myfootball.util.converter.LeagueSessionConverter;
 import com.phatcao.myfootball.util.converter.MatchConverter;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -31,29 +36,42 @@ public class LeagueFacadeImpl implements LeagueFacade
 	MatchService matchService;
 	@Resource
 	MatchConverter matchConverter;
+	@Resource
+	LeagueSessionService leagueSessionService;
+	@Resource
+	LeagueSessionConverter leagueSessionConverter;
 	@Override
 	public ResponseData getLeaguesByUsername(String userName)
 	{
-		List<String> listLeagueIdOfUser = userLeagueService.getUserLeagueByUserName(userName).stream()
-				.map(UserLeagueEntity::getUserName).collect(Collectors.toList());
-		return new ResponseData(true, "ok" , listLeagueIdOfUser);
+		List<UserLeagueEntity> data = userLeagueService.getUserLeagueByUserName(userName);
+		List <LeagueData> result = null;
+
+		if (!CollectionUtils.isEmpty(data)) {
+			List<Integer> listLeagueIdOfUser = data.stream()
+					.map(UserLeagueEntity::getLeagueId).collect(Collectors.toList());
+			 result = leagueService.getLeaguesByListId(listLeagueIdOfUser);
+		}
+
+		return new ResponseData(true, "ok" , result);
 	}
 
 	@Override
-	public ResponseData getInfoLeagueById(long leagueId)
+	public ResponseData getInfoLeagueById(Integer leagueId)
 	{
-		return new ResponseData(true, "ok", leagueService.getLeagueInfoById(leagueId));
+		LeagueData result = leagueService.getLeagueInfoById(leagueId);
+		List<LeagueSessionData> leagueSessionData = leagueSessionConverter.convertListDAOtoDTO(leagueSessionService.getLeagueSessionByLeagueId(leagueId)) ;
+		result.setLeagueSessionData(leagueSessionData);
+		return new ResponseData(true, "ok",result);
 	}
 
 	@Override
-	public ResponseData getMatchInfoByLeagueId(long leagueId)
+	public ResponseData getMatchInfoByLeagueId(Integer leagueId)
 	{
 		LeagueMatchData result = new LeagueMatchData();
 
 		List<MatchEntity> matchEntities = matchService.getAllMatchByLeagueId(leagueId);
 		result.setIncomingMatchList(getIncomingMatch(matchEntities));
 		result.setCompleteMatchDataList(getCompleteMatch(matchEntities));
-
 		return null;
 	}
 

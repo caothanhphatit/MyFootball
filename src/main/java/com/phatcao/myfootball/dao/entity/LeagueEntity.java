@@ -21,7 +21,7 @@ public class LeagueEntity implements Serializable
 	private int leagueId;
 
 	@Column(name="league_name")
-	private int leagueName;
+	private String leagueName;
 
 	@Column(name = "country")
 	private int country;

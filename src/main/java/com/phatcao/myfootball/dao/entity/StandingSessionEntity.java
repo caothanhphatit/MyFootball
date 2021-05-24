@@ -15,8 +15,9 @@ import java.io.Serializable;
 public class StandingSessionEntity implements Serializable
 {
 
-	@EmbeddedId
-	private StandingSessionPK standingSessionPK;
+	@Id
+	@Column(name = "id")
+	private int id;
 
 	@Column(name = "match_play")
 	private int matchPlay;
@@ -42,21 +43,15 @@ public class StandingSessionEntity implements Serializable
 	@Column(name = "points")
 	private int points;
 
-	@Embeddable
-	public class StandingSessionPK implements Serializable
-	{
-		@Column(name= "league_session_id")
-		protected int leagueSessionId;
-		@Column(name = "group_id")
-		protected int groupId;
-		@Column(name = "code_team")
-		private int codeTeam;
+	@Column(name= "league_session_id")
+	protected int leagueSessionId;
 
-		public StandingSessionPK() {}
+	@Column(name = "group_id")
+	protected int groupId;
 
-		public StandingSessionPK(int leagueSessionId, int groupId) {
-			this.leagueSessionId = leagueSessionId;
-			this.groupId = groupId;
-		}
-	}
+	@Column(name = "code_team")
+	private int codeTeam;
+
+
+
 }
