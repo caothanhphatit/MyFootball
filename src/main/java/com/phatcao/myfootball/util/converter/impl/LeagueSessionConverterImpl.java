@@ -6,7 +6,6 @@ import com.phatcao.myfootball.util.converter.LeagueSessionConverter;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,20 +15,22 @@ import java.util.stream.Collectors;
 public class LeagueSessionConverterImpl implements LeagueSessionConverter
 {
 	@Override
-	public List<LeagueSessionData> convertListDAOtoDTO(List<LeagueSessionEntity> source)
+	public List<LeagueSessionData> convertListDAOtoDTO(final List<LeagueSessionEntity> source)
 	{
-		if(CollectionUtils.isEmpty(source))
+		if (CollectionUtils.isEmpty(source))
+		{
 			return null;
+		}
 		return source.stream().map(this::convertDAOtoDTO).collect(Collectors.toList());
 	}
 
 	@Override
-	public LeagueSessionData convertDAOtoDTO(LeagueSessionEntity source)
+	public LeagueSessionData convertDAOtoDTO(final LeagueSessionEntity source)
 	{
-		LeagueSessionData target = new LeagueSessionData();
+		final LeagueSessionData target = new LeagueSessionData();
 		target.setId(source.getLeagueSessionId());
 		target.setName(source.getLeagueSessionName());
-		target.setStartDay(new Date (source.getStartDay()));
+		target.setStartDay(new Date(source.getStartDay()));
 		target.setEndDay(new Date(source.getEndDay()));
 		return target;
 	}

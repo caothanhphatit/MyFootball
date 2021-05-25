@@ -14,14 +14,15 @@ public class HomeFacadeImpl implements HomeFacade
 	@Resource
 	LeagueService leagueService;
 
-	private ResponseData getResponseData(){
+	private static ResponseData getResponseData()
+	{
 		return new ResponseData();
 	}
 
 	@Override
 	public ResponseData getHomePage()
 	{
-		ResponseData responseData = getResponseData();
+		final ResponseData responseData = getResponseData();
 		responseData.setData(leagueService.getAllLeague());
 		responseData.setMessage("success");
 		responseData.setSuccess(true);

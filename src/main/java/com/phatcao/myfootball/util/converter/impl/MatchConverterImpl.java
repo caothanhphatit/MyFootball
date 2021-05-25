@@ -7,10 +7,10 @@ import com.phatcao.myfootball.dto.match.MatchData;
 import com.phatcao.myfootball.service.TeamService;
 import com.phatcao.myfootball.util.converter.MatchConverter;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+
 
 @Component
 public class MatchConverterImpl implements MatchConverter
@@ -21,9 +21,9 @@ public class MatchConverterImpl implements MatchConverter
 
 
 	@Override
-	public MatchData convertEntityToData(MatchEntity source)
+	public MatchData convertEntityToData(final MatchEntity source)
 	{
-		MatchData target = new MatchData();
+		final MatchData target = new MatchData();
 		target.setMatchId(source.getMatchId());
 		return target;
 
@@ -31,19 +31,19 @@ public class MatchConverterImpl implements MatchConverter
 	}
 
 	@Override
-	public List<MatchData> convertEntitiesToDataList(List<MatchEntity> sources)
+	public List<MatchData> convertEntitiesToDataList(final List<MatchEntity> sources)
 	{
 		return null;
 	}
 
 	@Override
-	public IncomingMatchData convertEntityToIncomingMatchData(MatchEntity source)
+	public IncomingMatchData convertEntityToIncomingMatchData(final MatchEntity source)
 	{
 		return null;
 	}
 
 	@Override
-	public CompleteMatchData convertEntityToCompleteMatchData(MatchEntity m)
+	public CompleteMatchData convertEntityToCompleteMatchData(final MatchEntity m)
 	{
 		return null;
 	}

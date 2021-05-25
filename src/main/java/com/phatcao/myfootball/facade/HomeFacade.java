@@ -5,5 +5,5 @@ import com.phatcao.myfootball.dto.common.ResponseData;
 
 public interface HomeFacade
 {
-		ResponseData getHomePage ();
+	ResponseData getHomePage();
 }

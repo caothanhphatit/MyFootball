@@ -16,7 +16,7 @@ public class StandingSessionServiceImpl implements StandingSessionService
 	StandingSessionRepository standingSessionRepository;
 
 	@Override
-	public List<StandingSessionEntity> getLeagueSessionByLeagueId(int sessionId)
+	public List<StandingSessionEntity> getLeagueSessionByLeagueId(final int sessionId)
 	{
 		return standingSessionRepository.getStandingSessionEntitiesByLeagueSessionId(sessionId);
 	}

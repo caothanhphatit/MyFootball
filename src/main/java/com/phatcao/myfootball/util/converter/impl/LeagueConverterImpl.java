@@ -13,14 +13,15 @@ import java.util.stream.Collectors;
 public class LeagueConverterImpl implements LeagueConverter
 {
 
-	private LeagueData getLeagueData(){
+	private static LeagueData getLeagueData()
+	{
 		return new LeagueData();
 	}
 
 	@Override
-	public LeagueData convertLeagueEntityToLeagueData(LeagueEntity source)
+	public LeagueData convertLeagueEntityToLeagueData(final LeagueEntity source)
 	{
-		LeagueData target = getLeagueData();
+		final LeagueData target = getLeagueData();
 
 		target.setLeagueId(source.getLeagueId());
 		target.setLeagueName(source.getLeagueName());
@@ -28,7 +29,7 @@ public class LeagueConverterImpl implements LeagueConverter
 	}
 
 	@Override
-	public List<LeagueData> convertLeagueEntitiesToLeagueData(List<LeagueEntity> sources)
+	public List<LeagueData> convertLeagueEntitiesToLeagueData(final List<LeagueEntity> sources)
 	{
 		return sources.stream().map(this::convertLeagueEntityToLeagueData).collect(Collectors.toList());
 	}

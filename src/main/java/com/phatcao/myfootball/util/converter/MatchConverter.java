@@ -11,7 +11,9 @@ import java.util.List;
 public interface MatchConverter
 {
 	MatchData convertEntityToData(MatchEntity source);
+
 	List<MatchData> convertEntitiesToDataList(List<MatchEntity> sources);
+
 	IncomingMatchData convertEntityToIncomingMatchData(MatchEntity source);
 
 	CompleteMatchData convertEntityToCompleteMatchData(MatchEntity m);

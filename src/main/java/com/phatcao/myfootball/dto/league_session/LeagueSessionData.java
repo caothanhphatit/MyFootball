@@ -14,7 +14,7 @@ import java.util.Date;
 public class LeagueSessionData
 {
 	private int id;
-	private String name ;
+	private String name;
 	private Date startDay;
 	private Date endDay;
 }

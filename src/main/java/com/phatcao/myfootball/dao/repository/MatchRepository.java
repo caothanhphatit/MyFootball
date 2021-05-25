@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @Repository
-public interface MatchRepository extends JpaRepository<MatchEntity,Long >
+public interface MatchRepository extends JpaRepository<MatchEntity, Long>
 {
 	@Query("select m from MatchEntity m where m.leagueSessionId = ?1")
 	List<MatchEntity> findAllMatchByLeagueId(long leagueId);

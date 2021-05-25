@@ -4,8 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
+
 
 @Entity
 @Data
@@ -43,11 +47,11 @@ public class StandingSessionEntity implements Serializable
 	@Column(name = "points")
 	private int points;
 
-	@Column(name= "league_session_id")
+	@Column(name = "league_session_id")
 	protected int leagueSessionId;
 
 	@Column(name = "group_id")
-	protected int groupId;
+	protected String groupId;
 
 	@Column(name = "code_team")
 	private int codeTeam;

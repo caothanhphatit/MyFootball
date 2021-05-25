@@ -13,7 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class StandingSessionData implements Serializable
 {
-	private TeamData team ;
+	private TeamData team;
 	private int matchPlay;
 	private int win;
 	private int draw;

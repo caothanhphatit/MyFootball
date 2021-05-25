@@ -8,7 +8,6 @@ import com.phatcao.myfootball.service.LeagueSessionService;
 import com.phatcao.myfootball.service.StandingSessionService;
 import com.phatcao.myfootball.util.converter.StandingSessionConverter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -26,14 +25,15 @@ public class LeagueSessionFacadeImpl implements LeagueSessionFacade
 
 	@Autowired
 	StandingSessionConverter standingSessionConverter;
+
 	@Override
-	public ResponseData getLeagueStandingBoard(int sessionId)
+	public ResponseData getLeagueStandingBoard(final int sessionId)
 	{
-		ResponseData responseData = new ResponseData();
+		final ResponseData responseData = new ResponseData();
 
-		List <StandingSessionEntity> standingSessionEntities = standingSessionService.getLeagueSessionByLeagueId( sessionId);
+		final List<StandingSessionEntity> standingSessionEntities = standingSessionService.getLeagueSessionByLeagueId(sessionId);
 
-	List<LeagueSessionBoardStandingData> response = standingSessionConverter.groupEntitiesToData(standingSessionEntities);
+		final List<LeagueSessionBoardStandingData> response = standingSessionConverter.groupEntitiesToData(standingSessionEntities);
 
 
 		return null;
