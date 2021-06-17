@@ -30,10 +30,10 @@ public class MatchConverterImpl implements MatchConverter
 		target.setMatchId(source.getMatchId());
 		target.setHome(teamService.getTeamDataById(source.getCodeTeamHome()));
 		target.setGuest(teamService.getTeamDataById(source.getCodeTeamGuest()));
-		//target.getHome().setScore();
+		target.getHome().setScore(source.getScoreTeamHome());
+		target.getGuest().setScore(source.getScoreTeamGuest());
 		target.setMatchId(source.getMatchId());
 		target.setLocation(1);
-
 		return target;
 	}
 

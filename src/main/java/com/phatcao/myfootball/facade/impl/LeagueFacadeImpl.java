@@ -77,6 +77,13 @@ public class LeagueFacadeImpl implements LeagueFacade
 		return null;
 	}
 
+	@Override
+	public ResponseData getAllLeague() {
+
+		final List<LeagueData> leagueData = leagueService.getAllLeague();
+		return new ResponseData(true, "ok", leagueData);
+	}
+
 	private List<CompleteMatchData> getCompleteMatch(final List<MatchEntity> matchEntities)
 	{
 		final List<CompleteMatchData> results = new ArrayList<>();

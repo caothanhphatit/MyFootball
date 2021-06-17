@@ -10,4 +10,5 @@ public interface MatchService
 	List<MatchEntity> getAllMatchByLeagueId(long leagueId);
 
 	MatchEntity getMatchById(long id);
+
 }

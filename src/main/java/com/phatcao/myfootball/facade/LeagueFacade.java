@@ -10,4 +10,6 @@ public interface LeagueFacade
 	ResponseData getInfoLeagueById(Integer leagueId);
 
 	ResponseData getMatchInfoByLeagueId(Integer leagueId);
+
+    ResponseData getAllLeague();
 }

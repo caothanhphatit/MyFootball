@@ -25,4 +25,7 @@ public class LeagueEntity implements Serializable
 
 	@Column(name = "country")
 	private int country;
+
+	@Column(name = "status")
+	private int status;
 }

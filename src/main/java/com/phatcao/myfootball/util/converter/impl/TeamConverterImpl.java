@@ -16,6 +16,7 @@ public class TeamConverterImpl implements TeamConverter
 		target.setName(source.getNameTeam());
 		target.setImage(source.getCodeTeam());
 		target.setImage("default");
+		target.setCodeTeam(source.getCodeTeam());
 		return target;
 	}
 }

@@ -24,7 +24,6 @@ public class LeagueServiceImpl implements LeagueService
 	public List<LeagueData> getAllLeague()
 	{
 		final List<LeagueEntity> resultEntity = leagueRepository.findAll();
-
 		return leagueConverter.convertLeagueEntitiesToLeagueData(resultEntity);
 
 	}

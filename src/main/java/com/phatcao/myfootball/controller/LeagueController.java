@@ -29,9 +29,23 @@ public class LeagueController
 		}
 		catch (NullPointerException e)
 		{
-			return new ResponseEntity<>(new ResponseData(true,e.getMessage() , null), HttpStatus.TEMPORARY_REDIRECT);
+			return new ResponseEntity<>(new ResponseData(true,e.getMessage() , null), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+
+	@GetMapping("/get-all-league")
+	public ResponseEntity<?> getAllLeague()
+	{
+		try{
+			ResponseData result = leagueFacade.getAllLeague();
+			return new ResponseEntity<>(result , HttpStatus.OK);
+		}
+		catch (NullPointerException e)
+		{
+			return new ResponseEntity<>(new ResponseData(true,e.getMessage() , null), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
 
 	@GetMapping ("/league/{leagueId}/info")
 	public ResponseData getLeagueInfo(@PathVariable Integer leagueId)

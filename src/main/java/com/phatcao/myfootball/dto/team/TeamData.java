@@ -22,5 +22,5 @@ public class TeamData
 		private String name;
 
 		@JsonProperty("score")
-		private ScoreData score;
+		private Integer score;
 }
