@@ -6,9 +6,10 @@ import com.phatcao.myfootball.dto.match.IncomingMatchData;
 import com.phatcao.myfootball.dto.match.MatchData;
 import com.phatcao.myfootball.service.TeamService;
 import com.phatcao.myfootball.util.converter.MatchConverter;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Component;
-
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -23,11 +24,17 @@ public class MatchConverterImpl implements MatchConverter
 	@Override
 	public MatchData convertEntityToData(final MatchEntity source)
 	{
+		if(source == null )
+			throw new AccessDeniedException("Not data found");
 		final MatchData target = new MatchData();
 		target.setMatchId(source.getMatchId());
+		target.setHome(teamService.getTeamDataById(source.getCodeTeamHome()));
+		target.setGuest(teamService.getTeamDataById(source.getCodeTeamGuest()));
+		//target.getHome().setScore();
+		target.setMatchId(source.getMatchId());
+		target.setLocation(1);
+
 		return target;
-
-
 	}
 
 	@Override

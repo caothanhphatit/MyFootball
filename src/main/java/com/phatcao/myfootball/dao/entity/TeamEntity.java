@@ -17,10 +17,10 @@ public class TeamEntity implements Serializable
 	@Id
 	@Column(name = "code_team", unique = true, nullable = false, insertable = false, updatable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int codeTeam;
+	private String codeTeam;
 
 	@Column(name="name_team")
-	private int nameTeam;
+	private String nameTeam;
 
 	@Column(name = "type")
 	private int type;

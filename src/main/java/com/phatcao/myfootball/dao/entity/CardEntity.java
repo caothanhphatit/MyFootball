@@ -3,6 +3,7 @@ package com.phatcao.myfootball.dao.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,19 +16,19 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "card")
-public class CardEntity
+public class CardEntity implements Serializable
 {
 	@Id
 	@Column(name = "id_card")
 	private String cardId;
 
-	@Column(name = "match")
+	@Column(name = "matchs")
 	private int match;
 
 	@Column(name = "player")
 	private int player;
 
-	@Column(name = "type")
+	@Column(name = "card_type")
 	private int type;
 
 	@Column(name = "time")

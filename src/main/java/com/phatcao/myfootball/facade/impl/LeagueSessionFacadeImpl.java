@@ -35,7 +35,9 @@ public class LeagueSessionFacadeImpl implements LeagueSessionFacade
 
 		final List<LeagueSessionBoardStandingData> response = standingSessionConverter.groupEntitiesToData(standingSessionEntities);
 
-
-		return null;
+		responseData.setData(response);
+		responseData.setMessage("Success");
+		responseData.setSuccess(true);
+		return responseData;
 	}
 }

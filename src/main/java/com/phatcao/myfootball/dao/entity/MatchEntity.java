@@ -12,11 +12,11 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "match")
+@Table(name = "fb_match")
 public class MatchEntity implements Serializable
 {
 	@Id
-	@Column(name = "match_id", unique = true, nullable = false, insertable = false, updatable = false)
+	@Column(name = "match_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long matchId;
 
@@ -24,10 +24,10 @@ public class MatchEntity implements Serializable
 	private long leagueSessionId;
 
 	@Column(name = "code_team_home")
-	private int codeTeamHome;
+	private String codeTeamHome;
 
 	@Column(name = "code_team_guest")
-	private int codeTeamGuest;
+	private String codeTeamGuest;
 
 	@Column(name ="score_team_home")
 	private int scoreTeamHome;

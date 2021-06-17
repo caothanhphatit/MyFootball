@@ -1,6 +1,7 @@
 package com.phatcao.myfootball.dto.team;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.phatcao.myfootball.dto.ScoreData;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,4 +20,7 @@ public class TeamData
 
 		@JsonProperty("name")
 		private String name;
+
+		@JsonProperty("score")
+		private ScoreData score;
 }

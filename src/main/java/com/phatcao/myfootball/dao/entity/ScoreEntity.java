@@ -24,7 +24,7 @@ public class ScoreEntity
 	@Column(name = "match")
 	private int match;
 
-	@Column(name = "time")
+	@Column(name = "time_")
 	private int time;
 
 	@Column(name = "player")

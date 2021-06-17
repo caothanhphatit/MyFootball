@@ -21,4 +21,10 @@ public class MatchServiceImpl implements MatchService
 		return matchRepository.findAllMatchByLeagueId(leagueId);
 	}
 
+	@Override
+	public MatchEntity getMatchById(long id)
+	{
+		return matchRepository.findById(id).orElse(null);
+	}
+
 }
