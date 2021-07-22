@@ -1,6 +1,6 @@
 # MyFootball
-app football
+app football - My dream
 
-this app is developing with java framework
+this Back-end app is developing with Spring framework.
 
-Comming soon
+Comming soon ...
