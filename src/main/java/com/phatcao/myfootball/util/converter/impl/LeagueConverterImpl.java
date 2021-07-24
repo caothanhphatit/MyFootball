@@ -2,6 +2,9 @@ package com.phatcao.myfootball.util.converter.impl;
 
 import com.phatcao.myfootball.dao.entity.LeagueEntity;
 import com.phatcao.myfootball.dto.leauge.LeagueData;
+import com.phatcao.myfootball.integration.model.response.CountryResponseModel;
+import com.phatcao.myfootball.integration.model.response.LeagueInfoResponseModel;
+import com.phatcao.myfootball.integration.model.response.LeagueResponseModel;
 import com.phatcao.myfootball.util.converter.LeagueConverter;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +22,22 @@ public class LeagueConverterImpl implements LeagueConverter
 	}
 
 	@Override
-	public LeagueData convertLeagueEntityToLeagueData(final LeagueEntity source)
+	public LeagueEntity modelToEntity(LeagueInfoResponseModel model, CountryResponseModel country) {
+		LeagueEntity entity = new LeagueEntity();
+
+		entity.setCountry(country.getName());
+		entity.setLeagueId(Integer.parseInt(model.getId()));
+		entity.setLeagueName(model.getName());
+		entity.setStatus(1);
+		entity.setLogo(model.getLogo());
+		entity.setType(model.getType());
+		entity.setFlag(country.getFlag());
+		entity.setCountryCode(country.getCode());
+		return entity;
+	}
+
+	@Override
+	public LeagueData entityToData(final LeagueEntity source)
 	{
 		final LeagueData target = getLeagueData();
 
@@ -31,6 +49,6 @@ public class LeagueConverterImpl implements LeagueConverter
 	@Override
 	public List<LeagueData> convertLeagueEntitiesToLeagueData(final List<LeagueEntity> sources)
 	{
-		return sources.stream().map(this::convertLeagueEntityToLeagueData).collect(Collectors.toList());
+		return sources.stream().map(this::entityToData).collect(Collectors.toList());
 	}
 }

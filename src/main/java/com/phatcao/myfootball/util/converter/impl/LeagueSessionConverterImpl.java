@@ -1,7 +1,9 @@
 package com.phatcao.myfootball.util.converter.impl;
 
+import com.phatcao.myfootball.dao.entity.LeagueEntity;
 import com.phatcao.myfootball.dao.entity.LeagueSessionEntity;
 import com.phatcao.myfootball.dto.league_session.LeagueSessionData;
+import com.phatcao.myfootball.integration.model.response.SeasonResponseModel;
 import com.phatcao.myfootball.util.converter.LeagueSessionConverter;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -14,6 +16,20 @@ import java.util.stream.Collectors;
 @Component
 public class LeagueSessionConverterImpl implements LeagueSessionConverter
 {
+	@Override
+	public List<LeagueSessionEntity> convertModelsToEntities(List<SeasonResponseModel> models , int leagueId) {
+		return null;
+	}
+
+	private LeagueSessionEntity convertModelToEntity( SeasonResponseModel model, int leagueId){
+		LeagueSessionEntity entity = new LeagueSessionEntity();
+		entity.setLeagueId(leagueId);
+		entity.setStartDay(Integer.parseInt(model.getStart().replace('-','\0')));
+		entity.setEndDay(11);
+		entity.setYear(Integer.parseInt(model.getYear()));
+		return entity;
+	}
+
 	@Override
 	public List<LeagueSessionData> convertListDAOtoDTO(final List<LeagueSessionEntity> source)
 	{

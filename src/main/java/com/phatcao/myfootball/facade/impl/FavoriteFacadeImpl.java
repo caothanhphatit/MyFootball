@@ -9,6 +9,8 @@ import java.util.List;
 
 @Component
 public class FavoriteFacadeImpl implements FavoriteFacade {
+
+
     @Override
     public ResponseData addFavoriteLeague( List<LeagueData> leagueData) {
         return null;

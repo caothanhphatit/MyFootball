@@ -2,6 +2,9 @@ package com.phatcao.myfootball.controller;
 
 import com.phatcao.myfootball.dto.common.ResponseData;
 import com.phatcao.myfootball.facade.LeagueFacade;
+import com.phatcao.myfootball.integration.repository.FALeagueRepository;
+import org.json.JSONException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,6 +49,15 @@ public class LeagueController
 		}
 	}
 
+	@Autowired
+    FALeagueRepository faLeagueRepository;
+
+    @GetMapping ("/league/fetch")
+    public ResponseData fetchLeague () throws JSONException {
+
+	    faLeagueRepository.fetchAllLeague();
+	    return new ResponseData();
+    }
 
 	@GetMapping ("/league/{leagueId}/info")
 	public ResponseData getLeagueInfo(@PathVariable Integer leagueId)

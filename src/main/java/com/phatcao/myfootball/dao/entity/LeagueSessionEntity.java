@@ -32,4 +32,7 @@ public class LeagueSessionEntity implements Serializable
 	@Column(name = "end_day")
 	private long endDay;
 
+	@Column (name = "year")
+	private int year;
+
 }

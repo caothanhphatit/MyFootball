@@ -1,6 +1,7 @@
 package com.phatcao.myfootball.facade.impl;
 
 import com.phatcao.myfootball.common.Constant;
+import com.phatcao.myfootball.dao.entity.LeagueEntity;
 import com.phatcao.myfootball.dao.entity.MatchEntity;
 import com.phatcao.myfootball.dao.entity.UserLeagueEntity;
 import com.phatcao.myfootball.dto.common.ResponseData;
@@ -10,12 +11,18 @@ import com.phatcao.myfootball.dto.leauge.LeagueMatchData;
 import com.phatcao.myfootball.dto.match.CompleteMatchData;
 import com.phatcao.myfootball.dto.match.IncomingMatchData;
 import com.phatcao.myfootball.facade.LeagueFacade;
+import com.phatcao.myfootball.integration.model.response.CountryResponseModel;
+import com.phatcao.myfootball.integration.model.response.LeagueInfoResponseModel;
+import com.phatcao.myfootball.integration.model.response.LeagueResponseModel;
+import com.phatcao.myfootball.integration.model.response.SeasonResponseModel;
 import com.phatcao.myfootball.service.LeagueService;
 import com.phatcao.myfootball.service.LeagueSessionService;
 import com.phatcao.myfootball.service.MatchService;
 import com.phatcao.myfootball.service.UserLeagueService;
+import com.phatcao.myfootball.util.converter.LeagueConverter;
 import com.phatcao.myfootball.util.converter.LeagueSessionConverter;
 import com.phatcao.myfootball.util.converter.MatchConverter;
+import org.json.JSONException;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
@@ -40,6 +47,30 @@ public class LeagueFacadeImpl implements LeagueFacade
 	LeagueSessionService leagueSessionService;
 	@Resource
 	LeagueSessionConverter leagueSessionConverter;
+
+	@Resource
+	LeagueConverter leagueConverter;
+
+	@Override
+	public ResponseData fetchLeagueFromFA() throws JSONException {
+
+		List<LeagueResponseModel> listLeagueFromFA = leagueService.getAllLeagueFromFA();
+
+		List<LeagueEntity> leagueEntities = new ArrayList<>();
+		List<SeasonResponseModel> leagueSeasonResponseModels = new ArrayList<>();
+
+		for (LeagueResponseModel leagueFromFA: listLeagueFromFA
+			 ) {
+
+			leagueEntities.add(leagueConverter.modelToEntity(leagueFromFA.getLeague(),leagueFromFA.getCountry()));
+
+
+
+
+		}
+	return null;
+	}
+
 
 	@Override
 	public ResponseData getLeaguesByUsername(final String userName)
