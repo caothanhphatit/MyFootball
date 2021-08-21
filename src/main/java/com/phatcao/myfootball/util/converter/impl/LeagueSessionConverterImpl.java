@@ -3,7 +3,9 @@ package com.phatcao.myfootball.util.converter.impl;
 import com.phatcao.myfootball.dao.entity.LeagueEntity;
 import com.phatcao.myfootball.dao.entity.LeagueSessionEntity;
 import com.phatcao.myfootball.dto.league_session.LeagueSessionData;
+import com.phatcao.myfootball.integration.model.response.LeagueResponseModel;
 import com.phatcao.myfootball.integration.model.response.SeasonResponseModel;
+import com.phatcao.myfootball.util.common.DateTimeConverter;
 import com.phatcao.myfootball.util.converter.LeagueSessionConverter;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -19,7 +21,7 @@ import java.util.stream.Collectors;
 public class LeagueSessionConverterImpl implements LeagueSessionConverter
 {
 	@Override
-	public List<LeagueSessionEntity> convertModelsToEntities(List<SeasonResponseModel> models , int leagueId) {
+	public List<LeagueSessionEntity> convertModelsToEntities(List<SeasonResponseModel> models , LeagueResponseModel leagueId) {
 		List<LeagueSessionEntity> entities = new ArrayList<>();
 
 		if(!CollectionUtils.isEmpty(models))
@@ -31,9 +33,10 @@ public class LeagueSessionConverterImpl implements LeagueSessionConverter
 		return entities;
 	}
 
-	private LeagueSessionEntity convertModelToEntity( SeasonResponseModel model, int leagueId){
+	private LeagueSessionEntity convertModelToEntity( SeasonResponseModel model, LeagueResponseModel leagueId){
 		LeagueSessionEntity entity = new LeagueSessionEntity();
-		entity.setLeagueId(leagueId);
+		entity.setLeagueId(leagueId.getLeague().getId());
+		entity.setLeagueSessionName(leagueId.getLeague().getName() + model.getYear());
 		entity.setStartDay(model.getStart());
 		entity.setEndDay(model.getEnd());
 		entity.setYear(Integer.parseInt(model.getYear()));
@@ -56,8 +59,8 @@ public class LeagueSessionConverterImpl implements LeagueSessionConverter
 		final LeagueSessionData target = new LeagueSessionData();
 		target.setId(source.getLeagueSessionId());
 		target.setName(source.getLeagueSessionName());
-		target.setStartDay(new Date(source.getStartDay()));
-		target.setEndDay(new Date(source.getEndDay()));
+		target.setStartDay(DateTimeConverter.stringToDateTime(source.getStartDay()));
+		target.setEndDay(DateTimeConverter.stringToDateTime(source.getEndDay()));
 		return target;
 	}
 }

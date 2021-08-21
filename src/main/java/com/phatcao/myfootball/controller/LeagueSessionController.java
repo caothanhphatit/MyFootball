@@ -30,4 +30,20 @@ public class LeagueSessionController
 			return  null;
 		}
 	}
+
+	@GetMapping ("{id}/sessions")
+	public ResponseEntity getAllSessionByLeagueId(@PathVariable String id){
+		try
+		{
+			 int leagueId = id != null ? Integer.parseInt(id) : -1;
+
+			ResponseData response = leagueSessionFacade.getAllByLeagueId(leagueId);
+		return new ResponseEntity(response , HttpStatus.OK);
+		}
+
+		catch (Exception e) {
+			return  null;
+		}
+
+	}
 }

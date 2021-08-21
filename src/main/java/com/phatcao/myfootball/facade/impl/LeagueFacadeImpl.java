@@ -63,11 +63,8 @@ public class LeagueFacadeImpl implements LeagueFacade
 		for (LeagueResponseModel leagueFromFA: listLeagueFromFA
 			 ) {
 
-			if (leagueFromFA.getLeague().getId() == 39)  {
-				System.out.println("fasle");
-			}
 			leagueEntities.add(leagueConverter.modelToEntity(leagueFromFA.getLeague(),leagueFromFA.getCountry()));
-			leagueSeasonEntities.addAll(leagueSessionConverter.convertModelsToEntities(leagueFromFA.getSeasons(),leagueFromFA.getLeague().getId()));
+			leagueSeasonEntities.addAll(leagueSessionConverter.convertModelsToEntities(leagueFromFA.getSeasons(),leagueFromFA));
 		}
 		leagueService.saveList(leagueEntities);
 
