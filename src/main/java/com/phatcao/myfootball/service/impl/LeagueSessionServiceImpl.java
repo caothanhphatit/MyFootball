@@ -20,4 +20,9 @@ public class LeagueSessionServiceImpl implements LeagueSessionService
 	{
 		return leagueSessionRepository.findLeagueSessionEntitiesByLeagueId(leagueId);
 	}
+
+	@Override
+	public void saveList(List<LeagueSessionEntity> leagueSeasonEntities) {
+		leagueSessionRepository.saveAll(leagueSeasonEntities);
+	}
 }

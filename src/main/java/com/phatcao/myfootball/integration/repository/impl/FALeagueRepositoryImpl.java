@@ -27,9 +27,8 @@ public class FALeagueRepositoryImpl implements FALeagueRepository {
             if (jsonObject != null) {
                 // get data from jsonObject
                 final JSONArray jsonArray = jsonObject.getJSONArray("response");
-
                     final List<LeagueResponseModel> listLeague = objectMapper
-                            .readValue(jsonArray.toString(), new TypeReference<List<LeagueResponseModel>>() {
+                            .readValue(jsonArray.toString(), new TypeReference<>() {
                             });
                     return listLeague;
             }

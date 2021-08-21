@@ -49,13 +49,10 @@ public class LeagueController
 		}
 	}
 
-	@Autowired
-    FALeagueRepository faLeagueRepository;
-
     @GetMapping ("/league/fetch")
     public ResponseData fetchLeague () throws JSONException {
 
-	    faLeagueRepository.fetchAllLeague();
+	    leagueFacade.fetchLeagueFromFA();
 	    return new ResponseData();
     }
 

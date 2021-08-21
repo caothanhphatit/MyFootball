@@ -48,7 +48,12 @@ public class LeagueServiceImpl implements LeagueService
 	@Override
 	public LeagueData getLeagueInfoById(final Integer leagueId)
 	{
-		return leagueConverter.convertLeagueEntityToLeagueData(leagueRepository.getOne(leagueId));
+		return leagueConverter.entityToData(leagueRepository.getOne(leagueId));
+	}
+
+	@Override
+	public void saveList(List<LeagueEntity> leagueEntities) {
+		 leagueRepository.saveAll(leagueEntities);
 	}
 
 

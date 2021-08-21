@@ -18,7 +18,6 @@ public class LeagueEntity implements Serializable
 {
 	@Id
 	@Column(name = "league_id", unique = true, nullable = false, insertable = false, updatable = false)
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int leagueId;
 
 	@Column(name="league_name")

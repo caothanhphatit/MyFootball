@@ -8,4 +8,6 @@ import java.util.List;
 public interface LeagueSessionService
 {
 	List<LeagueSessionEntity> getLeagueSessionByLeagueId(Integer leagueId);
+
+    void saveList(List<LeagueSessionEntity> leagueSeasonEntities);
 }

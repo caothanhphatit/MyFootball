@@ -2,6 +2,7 @@ package com.phatcao.myfootball.facade.impl;
 
 import com.phatcao.myfootball.common.Constant;
 import com.phatcao.myfootball.dao.entity.LeagueEntity;
+import com.phatcao.myfootball.dao.entity.LeagueSessionEntity;
 import com.phatcao.myfootball.dao.entity.MatchEntity;
 import com.phatcao.myfootball.dao.entity.UserLeagueEntity;
 import com.phatcao.myfootball.dto.common.ResponseData;
@@ -57,17 +58,21 @@ public class LeagueFacadeImpl implements LeagueFacade
 		List<LeagueResponseModel> listLeagueFromFA = leagueService.getAllLeagueFromFA();
 
 		List<LeagueEntity> leagueEntities = new ArrayList<>();
-		List<SeasonResponseModel> leagueSeasonResponseModels = new ArrayList<>();
+		List<LeagueSessionEntity> leagueSeasonEntities = new ArrayList<>();
 
 		for (LeagueResponseModel leagueFromFA: listLeagueFromFA
 			 ) {
 
+			if (leagueFromFA.getLeague().getId() == 39)  {
+				System.out.println("fasle");
+			}
 			leagueEntities.add(leagueConverter.modelToEntity(leagueFromFA.getLeague(),leagueFromFA.getCountry()));
-
-
-
-
+			leagueSeasonEntities.addAll(leagueSessionConverter.convertModelsToEntities(leagueFromFA.getSeasons(),leagueFromFA.getLeague().getId()));
 		}
+		leagueService.saveList(leagueEntities);
+
+		leagueSessionService.saveList(leagueSeasonEntities);
+
 	return null;
 	}
 

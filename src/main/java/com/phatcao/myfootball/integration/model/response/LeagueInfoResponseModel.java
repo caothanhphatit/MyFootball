@@ -7,16 +7,16 @@ import java.io.Serializable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LeagueInfoResponseModel implements Serializable
 {
-    private String id ;
+    private Integer id ;
     private String name;
     private String type;
     private String logo;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

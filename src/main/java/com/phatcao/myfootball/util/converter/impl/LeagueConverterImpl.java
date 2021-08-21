@@ -26,7 +26,7 @@ public class LeagueConverterImpl implements LeagueConverter
 		LeagueEntity entity = new LeagueEntity();
 
 		entity.setCountry(country.getName());
-		entity.setLeagueId(Integer.parseInt(model.getId()));
+		entity.setLeagueId(model.getId());
 		entity.setLeagueName(model.getName());
 		entity.setStatus(1);
 		entity.setLogo(model.getLogo());

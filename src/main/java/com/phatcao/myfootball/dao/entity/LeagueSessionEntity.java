@@ -27,10 +27,10 @@ public class LeagueSessionEntity implements Serializable
 	private String leagueSessionName;
 
 	@Column(name = "start_day")
-	private long startDay;
+	private String startDay;
 
 	@Column(name = "end_day")
-	private long endDay;
+	private String endDay;
 
 	@Column (name = "year")
 	private int year;

@@ -8,6 +8,8 @@ import com.phatcao.myfootball.util.converter.LeagueSessionConverter;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,14 +20,22 @@ public class LeagueSessionConverterImpl implements LeagueSessionConverter
 {
 	@Override
 	public List<LeagueSessionEntity> convertModelsToEntities(List<SeasonResponseModel> models , int leagueId) {
-		return null;
+		List<LeagueSessionEntity> entities = new ArrayList<>();
+
+		if(!CollectionUtils.isEmpty(models))
+		for (SeasonResponseModel season: models
+			 ) {
+			entities.add(convertModelToEntity(season, leagueId));
+		}
+
+		return entities;
 	}
 
 	private LeagueSessionEntity convertModelToEntity( SeasonResponseModel model, int leagueId){
 		LeagueSessionEntity entity = new LeagueSessionEntity();
 		entity.setLeagueId(leagueId);
-		entity.setStartDay(Integer.parseInt(model.getStart().replace('-','\0')));
-		entity.setEndDay(11);
+		entity.setStartDay(model.getStart());
+		entity.setEndDay(model.getEnd());
 		entity.setYear(Integer.parseInt(model.getYear()));
 		return entity;
 	}

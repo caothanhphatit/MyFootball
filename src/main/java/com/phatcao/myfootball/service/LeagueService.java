@@ -1,5 +1,6 @@
 package com.phatcao.myfootball.service;
 
+import com.phatcao.myfootball.dao.entity.LeagueEntity;
 import com.phatcao.myfootball.dto.leauge.LeagueData;
 import com.phatcao.myfootball.integration.model.response.LeagueResponseModel;
 import org.json.JSONException;
@@ -16,4 +17,6 @@ public interface LeagueService
 	List<LeagueData> getLeaguesByListId(List<Integer> ids);
 
 	LeagueData getLeagueInfoById(Integer leagueId);
+
+    void saveList(List<LeagueEntity> leagueEntities);
 }

@@ -22,7 +22,7 @@ public class LeagueData implements Serializable
 	private String leagueName;
 	@JsonProperty("country")
 	private CountryData country;
-	@JsonProperty("leagueSession")
+	@JsonProperty("league_session")
 	private List<LeagueSessionData> leagueSessionData;
 
 }
