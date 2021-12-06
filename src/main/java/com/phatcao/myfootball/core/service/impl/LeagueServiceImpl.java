@@ -36,7 +36,7 @@ public class LeagueServiceImpl implements LeagueService
 	@Override
 	public List<LeagueData> getAllLeague()
 	{
-		final List<LeagueEntity> resultEntity = leagueRepository.findByIsActive();
+		final List<LeagueEntity> resultEntity = leagueRepository.findByIsActive(1);
 		return leagueConverter.convertLeagueEntitiesToLeagueData(resultEntity);
 
 	}
@@ -60,7 +60,7 @@ public class LeagueServiceImpl implements LeagueService
 	@Override
 	public LeagueData getLeagueInfoById(final Integer leagueId)
 	{
-		return leagueConverter.entityToData(leagueRepository.getOne(leagueId));
+		return leagueConverter.entityToData(leagueRepository.findByLeagueId(leagueId));
 	}
 
 	@Override

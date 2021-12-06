@@ -1,5 +1,6 @@
 package com.phatcao.myfootball.core.dto.leauge;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.phatcao.myfootball.core.dto.country.CountryData;
 import com.phatcao.myfootball.core.dto.league_session.LeagueSessionData;
@@ -24,5 +25,9 @@ public class LeagueData implements Serializable
 	private CountryData country;
 	@JsonProperty("league_session")
 	private List<LeagueSessionData> leagueSessionData;
+	@JsonProperty("flag")
+	private String flag;
+	@JsonProperty("logo")
+	private String logo;
 
 }

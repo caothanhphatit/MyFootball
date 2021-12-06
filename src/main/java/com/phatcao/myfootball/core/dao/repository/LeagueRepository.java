@@ -15,5 +15,7 @@ public interface LeagueRepository extends JpaRepository<LeagueEntity, Integer>
 
 	Page<LeagueEntity> findByIsActive(int isActive, Pageable pageable);
 
-	List<LeagueEntity> findByIsActive();
+	List<LeagueEntity> findByIsActive(int isActive);
+
+	LeagueEntity findByLeagueId(Integer leagueId);
 }

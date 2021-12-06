@@ -44,6 +44,8 @@ public class LeagueConverterImpl implements LeagueConverter
 		target.setLeagueId(source.getLeagueId());
 		target.setLeagueName(source.getLeagueName());
 		target.setCountry(new CountryData(source.getCountry()));
+		target.setFlag(source.getFlag());
+		target.setLogo(source.getLogo());
 
 		return target;
 	}
