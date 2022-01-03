@@ -15,9 +15,9 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "standing_session")
-public class StandingSessionEntity extends CommonEntity implements Serializable
-{
+public class StandingSessionEntity extends CommonEntity implements Serializable {
 
+	private static final long serialVersionUID = -5822177822698194938L;
 	@Column(name = "match_play")
 	private int matchPlay;
 
@@ -48,8 +48,8 @@ public class StandingSessionEntity extends CommonEntity implements Serializable
 	@Column(name = "group_id")
 	protected String groupId;
 
-	@Column(name = "code_team")
-	private int codeTeam;
+	//	@Column(name = "code_team")
+	//	private int codeTeam;
 
 
 

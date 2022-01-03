@@ -12,8 +12,7 @@ import java.util.Date;
 @Setter
 @Getter
 @MappedSuperclass
-public abstract class CommonEntity
-{
+public abstract class CommonEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

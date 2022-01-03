@@ -18,8 +18,8 @@ import java.util.List;
 
 
 @Service
-public class LeagueServiceImpl implements LeagueService
-{
+public class LeagueServiceImpl implements LeagueService {
+
 	@Resource
 	LeagueRepository leagueRepository;
 
@@ -28,44 +28,37 @@ public class LeagueServiceImpl implements LeagueService
 
 	@Autowired
 	FALeagueRepository faLeagueRepository;
+
 	@Override
 	public List<LeagueResponseModel> getAllLeagueFromFA() throws JSONException {
-			return faLeagueRepository.fetchAllLeague();
+		return faLeagueRepository.fetchAllLeague();
 	}
 
 	@Override
-	public List<LeagueData> getAllLeague()
-	{
+	public List<LeagueData> getAllLeague() {
 		final List<LeagueEntity> resultEntity = leagueRepository.findByIsActive(1);
 		return leagueConverter.convertLeagueEntitiesToLeagueData(resultEntity);
-
 	}
 
 	@Override
-	public Page<LeagueData> getAllLeague(Pageable pageable) {
-		Page<LeagueEntity> entities = leagueRepository.findByIsActive(1,pageable);
-
-		Page<LeagueData> data = entities.map(leagueEntity -> leagueConverter.entityToData(leagueEntity));
-
-	return data;
-
+	public Page<LeagueData> getAllLeague(final Pageable pageable) {
+		final Page<LeagueEntity> entities = leagueRepository.findByIsActive(1, pageable);
+		return entities.map(leagueEntity -> leagueConverter.entityToData(leagueEntity));
 	}
 
 	@Override
-	public List<LeagueData> getLeaguesByListId(final List<Integer> ids)
-	{
+	public List<LeagueData> getLeaguesByListId(final List<Integer> ids) {
 		return leagueConverter.convertLeagueEntitiesToLeagueData(leagueRepository.findAllById(ids));
 	}
 
 	@Override
-	public LeagueData getLeagueInfoById(final Integer leagueId)
-	{
+	public LeagueData getLeagueInfoById(final Integer leagueId) {
 		return leagueConverter.entityToData(leagueRepository.findByLeagueId(leagueId));
 	}
 
 	@Override
-	public void saveList(List<LeagueEntity> leagueEntities) {
-		 leagueRepository.saveAll(leagueEntities);
+	public void saveList(final List<LeagueEntity> leagueEntities) {
+		leagueRepository.saveAll(leagueEntities);
 	}
 
 
