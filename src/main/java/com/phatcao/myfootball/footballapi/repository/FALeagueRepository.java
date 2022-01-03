@@ -8,6 +8,12 @@ import java.util.List;
 
 public interface FALeagueRepository {
 
+ /**
+  * fetch all league from API
+  * @return
+  * @throws JSONException
+  */
  List<LeagueResponseModel> fetchAllLeague() throws JSONException;
+
 
 }

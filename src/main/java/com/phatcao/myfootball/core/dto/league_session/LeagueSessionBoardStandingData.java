@@ -12,10 +12,10 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class LeagueSessionBoardStandingData
-{
+public class LeagueSessionBoardStandingData {
 	@JsonProperty("group")
 	private String group;
+
 	@JsonProperty("board")
 	private List<StandingSessionData> standingSessionData;
 }
